@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFA Logistics - Parcel Shipping</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="deck-shell" id="deckShell">
+        <!-- Header -->
+        <header class="chrome chrome-top">
+            <p class="display-brand">ALFA<span class="accent-dot">.</span></p>
+            <p class="frame-number" id="frameNumber">01</p>
+        </header>
+
+        <!-- Deck Container -->
+        <div class="deck-container">
+            <div class="deck-track" id="deckTrack">
+                <!-- Frame 01: Homepage -->
+                <section class="deck-slide active" data-frame="0">
+                    <div class="slide-content">
+                        <p class="meta-label">Homepage</p>
+                        <div class="slide-main">
+                            <h1 class="display-heading">
+                                Limitless<span class="accent-dot">.</span><br>
+                                Simple<span class="accent-dot">.</span><br>
+                                Worldwide<span class="accent-dot">.</span>
+                            </h1>
+                            <p class="slide-description">
+                                Your steps to Germany-wide and international shipping with ALFA Logistics.
+                            </p>
+                            <button class="btn btn-primary btn-lg mt-4">
+                                <i class="bi bi-box-seam"></i> Send parcel
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Frame 02: Three Pillars -->
+                <section class="deck-slide" data-frame="1">
+                    <div class="slide-content">
+                        <p class="meta-label">Three Pillars</p>
+                        <h2 class="section-heading">How we help.</h2>
+                        <div class="pillars-list">
+                            <div class="pillar-item">
+                                <span class="pillar-number">01</span>
+                                <div>
+                                    <h3 class="pillar-title">Sending parcels</h3>
+                                    <p class="pillar-description">Whether your parcels are large or small, shipped privately or for business, ALFA always has the ideal solution for domestic and international shipping.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <span class="pillar-number">02</span>
+                                <div>
+                                    <h3 class="pillar-title">Receiving parcels</h3>
+                                    <p class="pillar-description">Won't be at home? No problem. Redirect your parcel or register a delivery preference: deposit okay, neighbour, or collection at an ALFA Point.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <span class="pillar-number">03</span>
+                                <div>
+                                    <h3 class="pillar-title">Returning parcels</h3>
+                                    <p class="pillar-description">The parcel has to go back? As a shipper you can use ALFA Returns to offer your customers a simple, individual returns service.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Frame 03: Quick Links -->
+                <section class="deck-slide" data-frame="2">
+                    <div class="slide-content">
+                        <p class="meta-label">Quick Links</p>
+                        <div class="quick-links-grid">
+                            <div class="quick-link-card">
+                                <h3>Send a parcel</h3>
+                                <p>Private or business. Drop off at an ALFA Point or book a pickup. From 3.59 €.</p>
+                                <button class="btn btn-outline-dark btn-sm mt-3">
+                                    <i class="bi bi-arrow-right"></i> Send parcel
+                                </button>
+                            </div>
+                            <div class="quick-link-card highlight">
+                                <h3>For business customers</h3>
+                                <p>Request a personal, no-obligation quote for regular shipping volumes.</p>
+                                <button class="btn btn-light btn-sm mt-3">
+                                    <i class="bi bi-briefcase"></i> Request offer
+                                </button>
+                            </div>
+                            <div class="quick-link-card">
+                                <h3>Log in / Register</h3>
+                                <p>Send, receive, redirect and return parcels with myALFA.</p>
+                                <button class="btn btn-outline-dark btn-sm mt-3">
+                                    <i class="bi bi-person-circle"></i> To myALFA
+                                </button>
+                            </div>
+                            <div class="quick-link-card">
+                                <h3>Find an ALFA Point</h3>
+                                <p>Find a nearby parcel shop or partner station.</p>
+                                <button class="btn btn-outline-dark btn-sm mt-3">
+                                    <i class="bi bi-geo-alt"></i> Find location
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Frame 04: Parcel Tracking -->
+                <section class="deck-slide" data-frame="3">
+                    <div class="slide-content">
+                        <p class="meta-label">Parcel Tracking</p>
+                        <div class="slide-main">
+                            <h2 class="display-heading">
+                                Where is my<br>
+                                parcel<span class="accent-dot">?</span>
+                            </h2>
+                            <p class="slide-description">
+                                Enter your ALFA parcel number and follow every step from pickup to doorstep.
+                            </p>
+                            <div class="tracking-form mt-4">
+                                <input type="text" class="form-control form-control-lg" placeholder="e.g. ALFA123456789DE">
+                                <button class="btn btn-primary btn-lg mt-3">
+                                    <i class="bi bi-search"></i> Track parcel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Frame 05: About ALFA -->
+                <section class="deck-slide" data-frame="4">
+                    <div class="slide-content">
+                        <p class="meta-label">About ALFA</p>
+                        <div class="slide-main">
+                            <h2 class="display-heading">
+                                Parcel<br>
+                                shipping<br>
+                                simplified<span class="accent-dot">.</span>
+                            </h2>
+                            <p class="slide-description">
+                                ALFA Logistics is your partner for parcel shipping within Germany and internationally. With our growing network of ALFA Points, we are always just around the corner.
+                            </p>
+                            <button class="btn btn-primary btn-lg mt-4" onclick="document.getElementById('deckTrack').style.transform='translateX(0)'; updateFrame(0);">
+                                <i class="bi bi-arrow-up"></i> Back to top
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer Navigation -->
+        <footer class="chrome chrome-bottom">
+            <button class="nav-btn" id="prevBtn" onclick="previousFrame()">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <div class="frame-indicators">
+                <button class="indicator active" data-frame="0" onclick="goToFrame(0)"></button>
+                <button class="indicator" data-frame="1" onclick="goToFrame(1)"></button>
+                <button class="indicator" data-frame="2" onclick="goToFrame(2)"></button>
+                <button class="indicator" data-frame="3" onclick="goToFrame(3)"></button>
+                <button class="indicator" data-frame="4" onclick="goToFrame(4)"></button>
+            </div>
+            <button class="nav-btn" id="nextBtn" onclick="nextFrame()">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </footer>
+    </main>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
