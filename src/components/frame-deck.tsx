@@ -16,7 +16,7 @@ const STRIKE_WORDS = [
 ] as const;
 
 const INDEX = ["01", "02", "03", "04", "05"] as const;
-const LABELS = ["Manifesto", "System", "Blocks", "Strike", "Close"] as const;
+const LABELS = ["Homepage", "Three Pillars", "Quick Links", "Tracking", "About"] as const;
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -107,11 +107,11 @@ export function FrameDeck() {
         pointer.current = null;
       }}
       aria-roledescription="carousel"
-      aria-label="FRAME"
+      aria-label="ALFA Logistics"
     >
       <header className="chrome chrome-top">
         <p className="font-display text-lg font-extrabold tracking-tight text-fg">
-          FRAME<span className="text-accent">.</span>
+          ALFA<span className="text-accent">.</span>
         </p>
         <p className="meta tabular-nums text-fg" aria-live="polite">
           {INDEX[index]}
@@ -119,16 +119,16 @@ export function FrameDeck() {
       </header>
 
       <div className="deck-track">
-        <section className="deck-slide" aria-hidden={index !== 0} aria-label="01 Manifesto">
+        <section className="deck-slide" aria-hidden={index !== 0} aria-label="01 Homepage">
           <Hero />
         </section>
-        <section className="deck-slide" aria-hidden={index !== 1} aria-label="02 System">
+        <section className="deck-slide" aria-hidden={index !== 1} aria-label="02 Three Pillars">
           <Rules />
         </section>
-        <section className="deck-slide" aria-hidden={index !== 2} aria-label="03 Blocks">
+        <section className="deck-slide" aria-hidden={index !== 2} aria-label="03 Quick Links">
           <Blocks />
         </section>
-        <section className="deck-slide" aria-hidden={index !== 3} aria-label="04 Strike">
+        <section className="deck-slide" aria-hidden={index !== 3} aria-label="04 Tracking">
           <Strike
             strikes={strikes}
             onStrike={() => {
@@ -137,7 +137,7 @@ export function FrameDeck() {
             }}
           />
         </section>
-        <section className="deck-slide" aria-hidden={index !== 4} aria-label="05 Close">
+        <section className="deck-slide" aria-hidden={index !== 4} aria-label="05 About">
           <Close onAgain={() => go(0)} />
         </section>
       </div>
@@ -182,18 +182,23 @@ export function FrameDeck() {
 function Hero() {
   return (
     <div className="slide-pad flex h-full flex-col">
-      <p className="meta">Manifesto</p>
+      <p className="meta">Homepage</p>
       <div className="flex min-h-0 flex-1 flex-col justify-end pb-2 md:justify-center md:pb-0">
         <h1 className="display text-fg">
-          No
+          Limitless<span className="text-accent">.</span>
           <br />
-          soft
+          Simple<span className="text-accent">.</span>
           <br />
-          edges<span className="text-accent">.</span>
+          Worldwide<span className="text-accent">.</span>
         </h1>
-        <p className="mt-6 max-w-[22ch] text-sm leading-snug text-muted md:text-base">
-          The viewport is a rectangle. Radius is a habit. We cut it.
+        <p className="mt-6 max-w-[28ch] text-sm leading-snug text-muted md:text-base">
+          Your steps to Germany-wide and international shipping with ALFA Logistics.
         </p>
+        <div className="mt-8">
+          <button type="button" className="cta">
+            Send parcel
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -201,18 +206,16 @@ function Hero() {
 
 function Rules() {
   const rules = [
-    { n: "01", title: "Square only", body: "Every corner is 90°." },
-    { n: "02", title: "One idea", body: "One thought per frame." },
-    { n: "03", title: "Hard cuts", body: "Short eases. No bounce." },
-    { n: "04", title: "One accent", body: "Vermillion, used once." },
-    { n: "05", title: "Full bleed", body: "Edge to edge. No scroll." },
+    { n: "01", title: "Sending parcels", body: "Whether your parcels are large or small, shipped privately or for business, ALFA always has the ideal solution." },
+    { n: "02", title: "Receiving parcels", body: "Redirect your parcel or register a delivery preference: deposit okay, neighbour, or collection at an ALFA Point." },
+    { n: "03", title: "Returning parcels", body: "The parcel has to go back? Use ALFA Returns to offer your customers a simple, individual returns service." },
   ] as const;
 
   return (
     <div className="slide-pad flex h-full flex-col">
-      <p className="meta">System</p>
+      <p className="meta">Three Pillars</p>
       <h2 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-fg md:mt-5 md:text-5xl">
-        Rules of the frame.
+        Our services.
       </h2>
       <ol className="mt-5 w-full max-w-xl md:mt-10">
         {rules.map((rule) => (
@@ -233,8 +236,8 @@ function Blocks() {
   return (
     <div className="slide-pad flex h-full flex-col">
       <div className="mb-4 flex items-baseline justify-between gap-4">
-        <p className="meta">Blocks</p>
-        <p className="meta hidden sm:block">Contact sheet</p>
+        <p className="meta">Quick Links</p>
+        <p className="meta hidden sm:block">Get started</p>
       </div>
       <div className="flex min-h-0 flex-1 items-center justify-center">
         <div className="grid aspect-square w-full max-w-[min(100%,calc(100dvh-14rem))] grid-cols-2 grid-rows-2 gap-1">
@@ -246,46 +249,28 @@ function Blocks() {
 }
 
 function Strike({ strikes, onStrike }: { strikes: number; onStrike: () => void }) {
-  const locked = strikes >= STRIKE_MAX;
-  const word = STRIKE_WORDS[strikes];
-
   return (
     <div className="slide-pad flex h-full flex-col">
-      <p className="meta">Strike</p>
-      <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-6">
-        <button
-          type="button"
-          className="strike"
-          onClick={onStrike}
-          aria-label={locked ? "Reset the plate" : "Strike the plate"}
-        >
-          {Array.from({ length: STRIKE_MAX }, (_, i) => {
-            const filled = strikes > i;
-            const top = ((STRIKE_MAX - 1 - i) / STRIKE_MAX) * 100;
-            return (
-              <span
-                key={i}
-                className="strike-band"
-                style={{
-                  top: `${top}%`,
-                  height: `${100 / STRIKE_MAX}%`,
-                  display: filled ? "block" : "none",
-                }}
-              />
-            );
-          })}
-          <span
-            className={`relative z-10 font-display text-4xl font-extrabold tracking-tight md:text-5xl ${
-              locked ? "text-ink" : "text-fg"
-            }`}
-          >
-            {word}
-          </span>
-        </button>
-        <p className="meta tabular-nums text-fg">
-          {pad(strikes)}
-          <span className="text-muted"> / {pad(STRIKE_MAX)} strikes</span>
+      <p className="meta">Parcel Tracking</p>
+      <div className="flex min-h-0 flex-1 flex-col justify-end pb-2 md:justify-center md:pb-0">
+        <h2 className="display text-fg">
+          Where is my
+          <br />
+          parcel<span className="text-accent">?</span>
+        </h2>
+        <p className="mt-6 max-w-[26ch] text-sm leading-snug text-muted md:text-base">
+          Enter your ALFA parcel number and follow every step from pickup to doorstep.
         </p>
+        <div className="mt-8 flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="e.g. ALFA123456789DE"
+            className="w-full max-w-xs border border-border bg-surface px-4 py-2 text-fg placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+          <button type="button" className="cta w-fit">
+            Track parcel
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -294,21 +279,21 @@ function Strike({ strikes, onStrike }: { strikes: number; onStrike: () => void }
 function Close({ onAgain }: { onAgain: () => void }) {
   return (
     <div className="slide-pad flex h-full flex-col">
-      <p className="meta">Close</p>
+      <p className="meta">About ALFA</p>
       <div className="flex min-h-0 flex-1 flex-col justify-end pb-2 md:justify-center md:pb-0">
         <h2 className="display text-fg">
-          The
+          Parcel
           <br />
-          frame
+          shipping
           <br />
-          holds<span className="text-accent">.</span>
+          simplified<span className="text-accent">.</span>
         </h2>
         <p className="mt-6 max-w-[28ch] text-sm leading-snug text-muted md:text-base">
-          Five frames. One accent. No scroll. Begin again, or leave it cut.
+          ALFA Logistics is your partner for parcel shipping within Germany and internationally. With our growing network, we are always just around the corner.
         </p>
         <div className="mt-8">
           <button type="button" className="cta" onClick={onAgain}>
-            Begin again
+            Back to top
           </button>
         </div>
       </div>
