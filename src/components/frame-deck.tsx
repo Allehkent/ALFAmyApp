@@ -206,16 +206,28 @@ function Hero() {
 
 function Rules() {
   const rules = [
-    { n: "01", title: "Sending parcels", body: "Whether your parcels are large or small, shipped privately or for business, ALFA always has the ideal solution." },
-    { n: "02", title: "Receiving parcels", body: "Redirect your parcel or register a delivery preference: deposit okay, neighbour, or collection at an ALFA Point." },
-    { n: "03", title: "Returning parcels", body: "The parcel has to go back? Use ALFA Returns to offer your customers a simple, individual returns service." },
+    {
+      n: "01",
+      title: "Sending parcels",
+      body: "Whether your parcels are large or small, shipped privately or for business, ALFA always has the ideal solution for domestic and international shipping.",
+    },
+    {
+      n: "02",
+      title: "Receiving parcels",
+      body: "Won't be at home? No problem. Redirect your parcel or register a delivery preference: deposit okay, neighbour, or collection at an ALFA Point.",
+    },
+    {
+      n: "03",
+      title: "Returning parcels",
+      body: "The parcel has to go back? As a shipper you can use ALFA Returns to offer your customers a simple, individual returns service.",
+    },
   ] as const;
 
   return (
     <div className="slide-pad flex h-full flex-col">
       <p className="meta">Three Pillars</p>
       <h2 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-fg md:mt-5 md:text-5xl">
-        Our services.
+        How we help.
       </h2>
       <ol className="mt-5 w-full max-w-xl md:mt-10">
         {rules.map((rule) => (
@@ -289,7 +301,7 @@ function Close({ onAgain }: { onAgain: () => void }) {
           simplified<span className="text-accent">.</span>
         </h2>
         <p className="mt-6 max-w-[28ch] text-sm leading-snug text-muted md:text-base">
-          ALFA Logistics is your partner for parcel shipping within Germany and internationally. With our growing network, we are always just around the corner.
+          ALFA Logistics is your partner for parcel shipping within Germany and internationally. With our growing network of ALFA Points, we are always just around the corner.
         </p>
         <div className="mt-8">
           <button type="button" className="cta" onClick={onAgain}>
