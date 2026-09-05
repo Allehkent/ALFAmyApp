@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "FRAME",
+      "hasCanvas": false,
+      "bodyTextLen": 490,
+      "bodyTextHash": "a1ad56dba60db0cb189feef15c0f953a7b4d7d3a84dfffd2bcd6fc5546d20a56",
+      "bodyTextPrefix": "FRAME. 01 MANIFESTO No soft edges. The viewport is a rectangle. ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "FRAME",
+      "hasCanvas": false,
+      "bodyTextLen": 476,
+      "bodyTextHash": "224ec279bc89ad48173e0034ef03695d7c7358f9ac86b6de29d1a4d14e30cdbc",
+      "bodyTextPrefix": "FRAME. 01 MANIFESTO No soft edges. The viewport is a rectangle. ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
