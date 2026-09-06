@@ -6,8 +6,6 @@ let currentFrame = 0;
 const totalFrames = 5;
 const frameNumberEl = document.getElementById('frameNumber');
 const deckTrackEl = document.getElementById('deckTrack');
-const prevBtnEl = document.getElementById('prevBtn');
-const nextBtnEl = document.getElementById('nextBtn');
 const indicatorsEl = document.querySelectorAll('.indicator');
 const slidesEl = document.querySelectorAll('.deck-slide');
 
@@ -42,25 +40,9 @@ function updateFrame(newIndex) {
         }
     });
     
-    // Update buttons state
-    prevBtnEl.disabled = currentFrame === 0;
-    nextBtnEl.disabled = currentFrame === totalFrames - 1;
-    
     // Translate deck
     const translateValue = -currentFrame * 100;
     deckTrackEl.style.transform = `translateX(${translateValue}%)`;
-}
-
-function nextFrame() {
-    if (currentFrame < totalFrames - 1) {
-        updateFrame(currentFrame + 1);
-    }
-}
-
-function previousFrame() {
-    if (currentFrame > 0) {
-        updateFrame(currentFrame - 1);
-    }
 }
 
 function goToFrame(frameIndex) {
@@ -68,41 +50,14 @@ function goToFrame(frameIndex) {
 }
 
 /* ============================================
-   KEYBOARD NAVIGATION
-   ============================================ */
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        nextFrame();
-    } else if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        previousFrame();
-    } else if (event.key === 'Home') {
-        event.preventDefault();
-        updateFrame(0);
-    } else if (event.key === 'End') {
-        event.preventDefault();
-        updateFrame(totalFrames - 1);
-    } else if (event.key === ' ') {
-        event.preventDefault();
-        // Space key can trigger tracking button on frame 3
-        if (currentFrame === 3) {
-            const trackBtn = document.querySelector('[onclick*="Track parcel"]');
-            if (trackBtn) trackBtn.click();
-        }
-    }
-});
-
-/* ============================================
-   TOUCH & POINTER EVENTS
+   TOUCH/SWIPE NAVIGATION ONLY
    ============================================ */
 
 const deckShell = document.getElementById('deckShell');
 
 deckShell.addEventListener('pointerdown', (event) => {
-    // Ignore right-click and non-primary buttons
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    // Only track touch and stylus, not mouse
+    if (event.pointerType === 'mouse') return;
     
     pointer = {
         x: event.clientX,
@@ -143,11 +98,15 @@ deckShell.addEventListener('pointerup', (event) => {
     
     // Left swipe = next frame
     if (dx < 0) {
-        nextFrame();
+        if (currentFrame < totalFrames - 1) {
+            updateFrame(currentFrame + 1);
+        }
     }
     // Right swipe = previous frame
     else {
-        previousFrame();
+        if (currentFrame > 0) {
+            updateFrame(currentFrame - 1);
+        }
     }
     
     pointer.id = null;
@@ -155,20 +114,6 @@ deckShell.addEventListener('pointerup', (event) => {
 
 deckShell.addEventListener('pointercancel', () => {
     pointer.id = null;
-});
-
-/* ============================================
-   BUTTON EVENT LISTENERS
-   ============================================ */
-
-// Prevent button click if user was swiping
-document.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        if (swiped) {
-            e.preventDefault();
-            swiped = false;
-        }
-    });
 });
 
 /* ============================================
@@ -183,7 +128,6 @@ if (trackingInput) {
             const parcelNumber = trackingInput.value.trim();
             if (parcelNumber) {
                 console.log('Tracking parcel:', parcelNumber);
-                // Show success message or redirect
                 alert(`Tracking parcel: ${parcelNumber}`);
             }
         }
@@ -201,13 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add vibration support for mobile
     if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
         document.addEventListener('click', (e) => {
-            if (e.target.closest('.btn') || e.target.closest('.indicator') || e.target.closest('.nav-btn')) {
+            if (e.target.closest('.btn') || e.target.closest('.indicator')) {
                 navigator.vibrate(12);
             }
         });
     }
     
-    // Log initialization
     console.log('ALFA Logistics App Initialized');
 });
 
@@ -215,18 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
    UTILITY FUNCTIONS
    ============================================ */
 
-// Pad numbers with leading zeros
 function pad(n) {
     return String(n).padStart(2, '0');
-}
-
-// Get current frame label
-function getCurrentFrameLabel() {
-    const labels = ['Homepage', 'Three Pillars', 'Quick Links', 'Parcel Tracking', 'About'];
-    return labels[currentFrame] || 'Unknown';
-}
-
-// Log analytics (optional)
-function logFrameChange(fromFrame, toFrame) {
-    console.log(`Frame changed: ${pad(fromFrame + 1)} → ${pad(toFrame + 1)}`);
 }
